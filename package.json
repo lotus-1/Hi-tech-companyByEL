@@ -1,0 +1,30 @@
+{
+  "name": "hi-tech-companybyel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/tap-test.js | tap-spec",
+    "start": "node src/server.js",
+    "server": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lotus-1/Hi-tech-companyByEL.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lotus-1/Hi-tech-companyByEL/issues"
+  },
+  "homepage": "https://github.com/lotus-1/Hi-tech-companyByEL#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.0",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.10.1"
+  },
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "qs": "^6.7.0"
+  }
+}
