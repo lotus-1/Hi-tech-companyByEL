@@ -4,11 +4,11 @@ const dbConnection = require("./db_connection.js");
 
 let sql = fs.readFileSync(`${__dirname}/db_build.sql`).toString();
 
-const runDbBuild = cb => {
-  dbConnection.query(sql, (err, res) => {
-    if (err) return cb(err);
-    cb(null, res);
-  });
+function lowercase(value) {
+  return value.toLowerCase()
 };
 
-module.exports = runDbBuild;
+
+module.exports = {
+  lowercase
+}
