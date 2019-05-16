@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test/tap-test.js | tap-spec",
+    "test": "node tests/tap-test.js | tap-spec",
     "start": "node src/server.js",
     "server": "nodemon src/server.js"
   },
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/lotus-1/Hi-tech-companyByEL#readme",
   "devDependencies": {
     "nodemon": "^1.19.0",
+    "supertest": "^4.0.2",
     "tap-spec": "^5.0.0",
     "tape": "^4.10.1"
   },
