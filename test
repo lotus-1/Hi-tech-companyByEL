@@ -1,0 +1,71 @@
+\d
+\l
+\l
+q
+\d
+\d authors
+\c
+\c psql --file=data.sql
+psql --file=data.sql
+\d book_authors;
+CREATE DATABASE usersdata;
+CREATE DATABASE users
+CREATE USER enassshaheen WITH SUPERUSER PASSWORD 'yasmensleem';
+CREATE DATABASE users
+CREATE USER enassshaheen WITH SUPERUSER PASSWORD 'yasmensleem';
+CREATE USER enass WITH SUPERUSER PASSWORD 'yoyo';
+ALTER DATABASE users OWNER TO enass;
+ALTER DATABASE users OWNER TO enass;
+/c
+CREATE DATABASE users
+;
+CREATE DATABASE users;
+ALTER DATABASE users OWNER TO enass;
+q
+\q
+\q
+CREATE TABLE user(id, name, location);
+CREATE TABLE users(id, name, location);
+CREATE TABLE users (id SERIAL PRIMARY KEY, name VARCHAR(100) , location VARCHAR(100));
+\d
+INSERT INTO users (name, location) VALUES ('noor', 'haifa'),('gamel', 'shfaram');
+\d
+SELECT * FROM users;
+\q
+CREATE DATABASE momo;
+CREATE USER nono WITH SUPERUSER PASSWORD momomo;
+CREATE USER nono WITH SUPERUSER PASSWORD 'momomo';
+ALTER DATABASE momo OWNER TO nono;
+\s momo
+\c nono
+\q
+\q
+\i /home/aa/Lotus/week-6/ws-database-testing/src/database/db_build.sql;
+\q
+SELECT * FROM books;
+\q
+psql postgres://yasmin:yasmin13@localhost:5432/employee
+;
+psql postgres://yasmin:yasmin13@localhost:5432/employee;
+psql \c postgres://yasmin:yasmin13@localhost:5432/employee
+\q
+CREATE DATABASE testurl
+;
+CREATE DATABASE testurl
+;
+CREATE DATABASE testurl;
+CREATE DATABASE test;
+CREATE USER testing WITH SUPERUSER PASSWORD 'dana';
+ALTER DATABASE test OWNER TO testing;
+\c test
+SELECT * FROM employee;
+\la
+\l
+\i /home/aa/Lotus/week-6/Hi-tech-companyByEL/tests/db_tests.js;
+\i /home/aa/Lotus/week-6/Hi-tech-companyByEL/tests/db_tests.js
+\i /home/aa/Lotus/week-6/Hi-tech-companyByEL/tests/db_tests.js
+\i /home/aa/Lotus/week-6/Hi-tech-companyByEL/tests/db_tests.js
+\i /home/aa/Lotus/week-6/Hi-tech-companyByEL/tests/db_tests.js
+\q
+\c psql TEST_DB_URL = postgres://testing:dana@localhost:5432/test
+\s test
