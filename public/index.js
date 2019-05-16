@@ -16,20 +16,26 @@ function updateDom(err, data) {
   if (err) {
     console.error(err);
   } else {
-    var users = JSON.parse(data);
-    var table = document.getElementById('users-table');
+    var employee = JSON.parse(data);
+    var table = document.getElementById('employee-table');
     /* create a row in table for each user returned from DB */
-    users.forEach(function(user) {
+    users.forEach(function(employee) {
       var row = document.createElement('tr');
-      var name = document.createElement('td');
-      name.innerHTML = user.name;
-      row.appendChild(name);
-      var location = document.createElement('td');
-      location.innerHTML = user.location;
-      row.appendChild(location);
+      var firstName = document.createElement('td');
+      firstName.innerHTML = employee.first_name;
+      row.appendChild(firstName);
+      var lastName = document.createElement('td');
+      lastName.innerHTML = employee.last_name;
+      row.appendChild(lastName);
+      var phoneNum = document.createElement('td');
+      phoneNum.innerHTML = employee.phone_num;
+      row.appendChild(phoneNum);
+      var jobId = document.createElement('td');
+      jobId.innerHTML = employee.job_id;
+      row.appendChild(jobId);
       table.appendChild(row);
     });
   }
 }
 
-request('/users', updateDom);
+request('/employee', updateDom);
