@@ -1,9 +1,9 @@
 const databaseConnection = require("../database/db_connection.js");
 
-const postinfo = (name, location, cb) => {
+const postinfo = (emp_id, first_name, last_name, phone_num, job_id, cb) => {
   databaseConnection.query(
-    "INSERT INTO users (name, location) VALUES ($1, $2)",
-    [name, location],
+    "INSERT INTO employee (emp_id, first_name, last_name, phone_num, job_id) VALUES ($1, $2, $3, $4, $5)",
+    [emp_id, first_name, last_name, phone_num, job_id],
     (err, res) => {
       if (err) {
         return cb(err);
