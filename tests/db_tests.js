@@ -1,4 +1,5 @@
-
+const getinfo = require("../src/queries/getinfo");
+const postinfo = require("../src/queries/postinfo");
 const tape = require("tape");
 const lowercase = require("../database/db_bulid.js");
 const request = require('supertest');
