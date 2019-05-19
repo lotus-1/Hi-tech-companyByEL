@@ -8,7 +8,7 @@ const getinfo = require('./database/queries/getinfo.js');
 const postinfo = require('./database/queries/postinfo.js');
 
 const serverError = (err, response) => {
-  response.writeHead(500, 'Content-Type:text/html');
+  response.writeHead(500, { 'Content-Type' : 'text/html' });
   response.end('<h1>Sorry, there was a problem loading the homepage</h1>');
   console.log(err);
 };
@@ -47,19 +47,15 @@ const publicHandler = (url, response) => {
 
 const createEmployeeHandler = (request, response ) => {
 let result = '';
-request.on('data', function(chunk) {
+request.on('result', chunk => {
   result += chunk;
 });
 request.on('end', () => {
-  const first_name = queryString.parse(result).first_name;
-  const last_name = queryString.parse(result).last_name;
-  const phone_num = queryString.parse(result).phone_num;
-  const job_id = queryString.parse(result).job_id;
-
+ const { first_name, last_name, phone_num, job_id } = qs.parse(result);
   postinfo(first_name, last_name, phone_num, job_id, err => {
     if(err)  return serverError(err, response);
         response.writeHead(302, { 'Location': '/' });
-        response.end();
+        response.end(first_name, last_name, phone_num, job_id);
       });
     });
 };
