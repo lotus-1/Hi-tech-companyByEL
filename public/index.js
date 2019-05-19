@@ -18,7 +18,6 @@ function updateDom(err, data) {
   } else {
     var employee = JSON.parse(data);
     var table = document.getElementById('employee-table');
-    /* create a row in table for each user returned from DB */
     users.forEach(function(employee) {
       var row = document.createElement('tr');
       var firstName = document.createElement('td');
