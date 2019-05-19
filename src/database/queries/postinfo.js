@@ -1,4 +1,4 @@
-const databaseConnection = require("../../database/db_connection.js");
+const databaseConnection = require("../db_connection.js");
 
 const postinfo = (emp_id, first_name, last_name, phone_num, job_id, cb) => {
   databaseConnection.query(
