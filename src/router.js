@@ -7,7 +7,9 @@ const {
 } = require('./handler');
 
 const router = (request, response) => {
-  const { url } = request;
+  console.log("type of reqest : " , typeof request);
+  const url = request.url;
+  console.log("url is: " , url);
 
   if (url === '/') {
     homeHandler(response);
@@ -16,7 +18,7 @@ const router = (request, response) => {
   } else if (url.includes('/employee')){
     getEmployeeHandler(url, response);
   } else if (url.includes('/create-employee')){
-    createEmployeeHandler(url, response);
+    createEmployeeHandler(request, response); // /public/index.js
   } else {
     errorHandler(response);
   }

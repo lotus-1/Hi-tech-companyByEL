@@ -47,11 +47,15 @@ const publicHandler = (url, response) => {
 
 const createEmployeeHandler = (request, response ) => {
 let result = '';
-request.on('result', chunk => {
+request.on('data', chunk => {
+  console.log("inside the create emp");
+
   result += chunk;
+console.log("this is result:" , result);
 });
 request.on('end', () => {
  const { first_name, last_name, phone_num, job_id } = qs.parse(result);
+ console.log("first_name, last_name, phone_num, job_id" , first_name, last_name, phone_num, job_id);
   postinfo(first_name, last_name, phone_num, job_id, err => {
     if(err)  return serverError(err, response);
         response.writeHead(302, { 'Location': '/' });
