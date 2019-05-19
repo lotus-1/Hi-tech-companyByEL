@@ -6,7 +6,7 @@ document.getElementById("submitButton").addEventListener("click", function(e) {
 
 function fetchValue() {
   var input = document.getElementById("firstn").value;
-  console.log("first name is " : ", input);
+  console.log("first name is: ", input);
   fetch("/create-employee" + input)
     .then(function(response) {
       return response.json();
@@ -36,4 +36,6 @@ function fetchValue() {
   }
 });
 
+
 request('/create-employee', updateDom);
+}
