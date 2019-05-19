@@ -6,7 +6,7 @@ const postinfo = (emp_id, first_name, last_name, phone_num, job_id, cb) => {
     [emp_id, first_name, last_name, phone_num, job_id],
     (err, res) => {
       if (err) {
-        return cb(err);
+        return (err);
       } else {
         cb(null, res);
       }
