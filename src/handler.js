@@ -2,8 +2,8 @@ const { readFile } = require('fs');
 const path = require('path');
 const qs = require('qs');
 
-const getinfo = require('./queries/getinfo.js');
-const postinfo = require('./queries/postinfo.js');
+const getinfo = require('./database/queries/getinfo.js');
+const postinfo = require('./database/queries/postinfo.js');
 
 const serverError = (err, response) => {
   response.writeHead(500, 'Content-Type:text/html');
@@ -54,22 +54,13 @@ request.on('end', () => {
   const phone_num = queryString.parse(result).phone_num;
   const job_id = queryString.parse(result).job_id;
 
-  postinfo(first_name, last_name, phone_num, job_id, (err,res) => {
-    if(err) {
-      response.writeHead(500,{ 'Content-Type': 'text/html' });
-      fs.readFile(__dirname + '/../public/index.html', function(error, file) {
-        if (error) {
-        console.log(error);
-        return;
-      } else {
-        response.end(file);
-      }
-      })
-    }
-  })
-})
-
-}
+  postinfo(first_name, last_name, phone_num, job_id, err => {
+    if(err)  return serverError(err, response);
+        response.writeHead(302, { 'Location': '/' });
+        response.end();
+      });
+    });
+};
 
 const errorHandler = response => {
   response.writeHead(404, { 'content-type': 'text/html' });
