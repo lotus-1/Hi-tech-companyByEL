@@ -1,6 +1,8 @@
 const { readFile } = require('fs');
 const path = require('path');
 const qs = require('qs');
+const request = require('request');
+const response = require('response');
 
 const getinfo = require('./database/queries/getinfo.js');
 const postinfo = require('./database/queries/postinfo.js');
@@ -43,7 +45,7 @@ const publicHandler = (url, response) => {
   });
 };
 
-const createEmployeeHandler = (url, response) => {
+const createEmployeeHandler = (request, response ) => {
 let result = '';
 request.on('data', function(chunk) {
   result += chunk;

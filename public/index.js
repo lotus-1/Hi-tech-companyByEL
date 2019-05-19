@@ -1,18 +1,17 @@
 /* generic XHR request */
-function request(url, cb) {
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      cb(null, xhr.responseText);
-    } else {
-      cb('error' + xhr.responseType);
-    }
-  };
-  xhr.open('GET', url, true);
-  xhr.send();
-}
+document.getElementById("submitButton").addEventListener("click", function(e) {
+  e.preventDefault();
+  fetchValue();
+});
 
-function updateDom(err, data) {
+function fetchValue() {
+  var input = document.getElementById("firstn").value;
+  console.log("first name is " : ", input);
+  fetch("/create-employee" + input)
+    .then(function(response) {
+      return response.json();
+    })
+    .then (function updateDom(err, data) {
   if (err) {
     console.error(err);
   } else {
@@ -35,6 +34,6 @@ function updateDom(err, data) {
       table.appendChild(row);
     });
   }
-}
+});
 
-request('/employee', updateDom);
+request('/create-employee', updateDom);
