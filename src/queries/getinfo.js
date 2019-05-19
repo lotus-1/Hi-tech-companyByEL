@@ -1,5 +1,5 @@
 
-const databaseConnection = require("../database/db_connection.js");
+const databaseConnection = require("../../database/db_connection.js");
 
 const getinfo = cb => {
   databaseConnection.query("SELECT * FROM employee", (err, res) => {

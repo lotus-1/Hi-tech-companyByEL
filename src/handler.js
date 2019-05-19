@@ -43,7 +43,7 @@ const publicHandler = (url, response) => {
   });
 };
 
-const createEmployee = (url, response) => {
+const createEmployeeHandler = (url, response) => {
 let result = '';
 request.on('data', function(chunk) {
   result += chunk;
