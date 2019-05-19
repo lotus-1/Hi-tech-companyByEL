@@ -1,13 +1,20 @@
-/* generic XHR request */
 document.getElementById("submitButton").addEventListener("click", function(e) {
   e.preventDefault();
   fetchValue();
 });
 
 function fetchValue() {
-  var input = document.getElementById("firstn").value;
-  console.log("first name is: ", input);
-  fetch("/create-employee" + input)
+  var input1 = document.getElementById("firstn").value;
+  console.log("first name is: ", input1);
+  var input2 = document.getElementById("lastn").value;
+  console.log("last name is: ", input2);
+  var input3 = document.getElementById("number");
+  console.log("number is: ", input3);
+  var input4 = document.getElementById("job");
+  console.log("job is: ", input4);
+
+
+  fetch("/create-employee")
     .then(function(response) {
       return response.json();
     })
@@ -33,9 +40,11 @@ function fetchValue() {
       row.appendChild(jobId);
       table.appendChild(row);
     });
+    .catch((error) => {
+      console.log(error)
+    });
   }
 });
-
-
-request('/create-employee', updateDom);
 }
+
+request.on('/create-employee', updateDom);
