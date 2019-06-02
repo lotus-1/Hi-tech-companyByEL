@@ -3,6 +3,9 @@ const path = require('path');
 const qs = require('query-string');
 const { getInfoRole, getInfoJob, getInfoEmployee } = require('./database/queries/getinfo.js');
 const postinfo = require('./database/queries/postinfo.js');
+var bcrypt = require('bcryptjs');
+// const Store = require('data-store')
+// const db = new Store('db', { cwd: './' });
 
 const serverError = (err, response) => {
   //console.log("the response is" ,response);
@@ -88,6 +91,29 @@ request.on('end', () => {
     });
 };
 
+const loginHandler = (request, response ) => {
+  const filepath = path.join(__dirname, '..','public', 'login.html');
+  readFile(filepath, (err, file) => {
+    if (err) return serverError(err, response);
+  console.log('this is login handler');
+  response.writeHead(200, { "content-type": "text/html" });
+  response.end(file);
+})
+};
+
+const signupHandler = (request, response ) => {
+  console.log('this is register handler1');
+
+  const filepath = path.join(__dirname, '..','public', 'register.html');
+  readFile(filepath, (err, file) => {
+    if (err) return serverError(err, response);
+  console.log('this is register handler');
+  response.writeHead(200, { "content-type": "text/html" });
+  response.end(file);
+})
+};
+
+
 
 const errorHandler = response => {
   response.writeHead(404, { 'content-type': 'text/html' });
@@ -99,5 +125,7 @@ module.exports = {
   getEmployeeHandler,
   publicHandler,
   createEmployeeHandler,
+  loginHandler,
+  signupHandler,
   errorHandler
 };
