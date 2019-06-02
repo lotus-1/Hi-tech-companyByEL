@@ -1,6 +1,6 @@
 document.getElementById("submitButton").addEventListener("click", function(e) {
   e.preventDefault();
-  fetchValue();
+  // fetchValue();
 });
 
 function fetchValue() {
@@ -14,41 +14,38 @@ function fetchValue() {
   console.log("job is: ", input4);
 
 
+  fetch("/employee")
+    .then(function(response) {
+      return response.json();
+    })
+    .then (function updateDom(err, data) {
+  if (err) {
+  console.error(err);
+  } else {
+    var employees = JSON.parse(data);
+console.log('employees:', employees);
+    var table = document.getElementById('employee-table');
+    employees.forEach(employee) => {
+      var row = document.createElement('tr');
+      var firstName = document.createElement('td');
+      firstName.textContent = employee.first_name;
+      row.appendChild(firstName);
+      var lastName = document.createElement('td');
+      lastName.textContent = employee.last_name;
+      row.appendChild(lastName);
+      var phoneNum = document.createElement('td');
+      phoneNum.textContent = employee.phone_num;
+      row.appendChild(phoneNum);
+      var jobId = document.createElement('td');
+      jobId.textContent = employee.job_id;
+      row.appendChild(jobId);
+      table.appendChild(row);
+    });
+    .catch (err) => {
+      console.log(err)
+    };
+  }
+});
+}
 
-
-//
-//   fetch("/create-employee")
-//     .then(function(response) {
-//       return response.json();
-//     })
-//     .then (function updateDom(err, data) {
-//   if (err) {
-//     console.error(err);
-//   } else {
-//     var employee = JSON.parse(data);
-//
-//     var table = document.getElementById('employee-table');
-//     users.forEach(function(employee) {
-//       var row = document.createElement('tr');
-//       var firstName = document.createElement('td');
-//       firstName.innerHTML = employee.first_name;
-//       row.appendChild(firstName);
-//       var lastName = document.createElement('td');
-//       lastName.innerHTML = employee.last_name;
-//       row.appendChild(lastName);
-//       var phoneNum = document.createElement('td');
-//       phoneNum.innerHTML = employee.phone_num;
-//       row.appendChild(phoneNum);
-//       var jobId = document.createElement('td');
-//       jobId.innerHTML = employee.job_id;
-//       row.appendChild(jobId);
-//       table.appendChild(row);
-//     });
-//     .catch((err) => {
-//       console.log(err)
-//     });
-//   }
-// });
-// }
-
-request.on('/create-employee', updateDom);
+request('/employee', updateDom);
