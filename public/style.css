@@ -1,3 +1,11 @@
 body {
+text-align: left;
+background-image: url(https://www.unpakt.com/blog/wp-content/uploads/2016/01/13181546_l-businessman-hand-point-on-virtual-business-network-in-board-room-810x534.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+form {
   text-align: left;
+  color: white;
 }

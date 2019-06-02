@@ -30,7 +30,8 @@ const getInfoJob = cb => {
       cb(null, res);
     }
   });
-};
+}
+
 module.exports = {
    getInfoJob,
    getInfoRole,

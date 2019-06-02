@@ -3,6 +3,8 @@ const {
   getEmployeeHandler,
   publicHandler,
   createEmployeeHandler,
+  loginHandler,
+  signupHandler,
   errorHandler
 } = require('./handler');
 
@@ -19,7 +21,11 @@ const router = (request, response) => {
   } else if (url.includes('/employee')){
     getEmployeeHandler(url, response);
   } else if (url.includes('/create-employee')){
-    createEmployeeHandler(request, response); // /public/index.js
+    createEmployeeHandler(request, response);
+  } else if (url.includes('/login')){
+    loginHandler(request, response);
+  } else if (url.includes('/register')){
+    signupHandler(request, response);
   } else {
     errorHandler(response);
   }

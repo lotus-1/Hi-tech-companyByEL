@@ -7,21 +7,27 @@
   </head>
   <body>
    <h1>Hi-tech-company</h1>
+
   <form class="form" action="/create-employee" method="post">
-       <h4>NEW employee :</h4>
-      <input  id= "firstn" type="text" name="firstName" placeholder="put your employee name">
-      <input id= "lastn" type="text" name="lastName" placeholder="put your employee last name">
-      <input id= number"" type="number" name="phoneNum" placeholder="put your employee phoneNum">
-      <input id= "job" type="number" name="jobId" placeholder="put your employee jobId">
-      <button  type="submit" id="submitButton"> Add Employee </button>
+       <h3>NEW employee :</h3>
+       <h4>First name</h4>
+      <input  id= "firstn" type="text" name="firstName" placeholder="put your employee name"><br>
+      <h4>Last name</h4>
+      <input id= "lastn" type="text" name="lastName" placeholder="put your employee last name"><br>
+      <h4>phone number</h4>
+      <input id= number"" type="number" name="phoneNum" placeholder="put your employee phoneNum"><br>
+      <h4>Job id</h4>
+      <input id= "job" type="number" name="jobId" placeholder="put your employee jobId"><br><br>
+
+      <button  type="submit" id="submitButton"> Add Employee </button><br><br>
   </form>
   <div class="table-container">
      <table id="employee-table">
        <tr>
-         <th>First Name</th>
-          <th>Last name</th>
-           <th>Phone Number</th>
-            <th>Job Id</th>
+         <td>First Name</td>
+          <td>Last name</td>
+           <td>Phone Number</td>
+            <td>Job Id</td>
        </tr>
   </div>
   <section>
