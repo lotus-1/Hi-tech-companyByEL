@@ -14,7 +14,7 @@ function fetchValue() {
   console.log("job is: ", input4);
 
 
-  fetch("/employee")
+  fetch("/create-employee")
     .then(function(response) {
       return response.json();
     })
@@ -48,4 +48,4 @@ console.log('employees:', employees);
 });
 }
 
-request('/employee', updateDom);
+request('/create-employee', updateDom);

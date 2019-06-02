@@ -60,34 +60,6 @@ const publicHandler = (url, response) => {
 };
 
 
-// const createEmployeeHandler = (request, response) => {
-// let result = '';
-// request.on('data', (chunk) => {
-//   result += chunk;
-// });
-// request.on('end', () => {
-//   const first_name = qs.parse(result).first_name;
-//   const last_name = qs.parse(result).last_name;
-//   const phone_num = qs.parse(result).phone_num;
-//   const job_id= qs.parse(result).job_id;
-//
-//   postData(first_name, last_name, phone_num, job_id,(err,res) => {
-//     if(err) {
-//       response.writeHead(500,{ 'Content-Type': 'text/html' });
-//       fs.readFile(__dirname + '/../public/index.html', (error, file) => {
-//         if (error) {
-//         console.log(error);
-//         return;
-//       } else {
-//         response.end(file);
-//       }
-//       })
-//     }
-//   })
-// })
-//
-// }
-
 const createEmployeeHandler = (request, response ) => {
 let result = '';
 request.on('data', chunk => {
@@ -97,13 +69,20 @@ request.on('data', chunk => {
 console.log("this is result:" , result);
 });
 request.on('end', () => {
+  console.log('inside the end');
  const { firstName, lastName, phoneNum, jobId } = qs.parse(result);
-  postinfo(firstName, lastName, phoneNum, jobId, err => {
+ console.log('inside the end',  firstName, lastName, phoneNum, jobId);
+
+  postinfo(firstName, lastName, phoneNum, jobId, (err, res) => {
+    console.log('inside the post');
     if(err) {
         return serverError(err, response);
+        console.log('inside the post2');
       } else {
         response.writeHead(302, { 'Location': '/' });
         response.end(firstName, lastName, phoneNum, jobId);
+        console.log('inside the post3');
+
       }
       });
     });
