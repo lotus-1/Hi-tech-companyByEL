@@ -7,9 +7,10 @@ const {
 } = require('./handler');
 
 const router = (request, response) => {
-  console.log("type of reqest : " , typeof request);
+  // console.log("type of reqest : " , typeof request);
   const url = request.url;
-  console.log("url is: " , url);
+  // console.log("url is: " , url);
+  //console.log('this the res in router', response);
 
   if (url === '/') {
     homeHandler(response);
