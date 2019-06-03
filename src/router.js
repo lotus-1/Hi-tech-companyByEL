@@ -26,6 +26,8 @@ const router = (request, response) => {
     loginHandler(request, response);
   } else if (url.includes('/register')){
     signupHandler(request, response);
+  } else if (url.includes('/register')){
+    registerHandler(reqest, response);
   } else {
     errorHandler(response);
   }

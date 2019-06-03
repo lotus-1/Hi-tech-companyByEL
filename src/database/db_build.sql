@@ -57,4 +57,13 @@ INSERT INTO job (seniority, boss, status) VALUES
 ('9', 'Semon', 'Not working');
 
 
+CREATE TABLE IF NOT EXISTE users (
+  id SERIAL PRIMARY KEY,
+  email INTEGER,
+  password INTEGER
+);
+
+INSERT INTO users (email, password) VALUES ('enasskmal@gmail.com', '123456oo');
+INSERT INTO users (email, password) VALUES ('loreenhamdan@gmail.com', '4587kj');
+
 COMMIT;
