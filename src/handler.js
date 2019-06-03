@@ -1,7 +1,7 @@
 const { readFile } = require('fs');
 const path = require('path');
 const qs = require('query-string');
-const { getInfoRole, getInfoJob, getInfoEmployee } = require('./database/queries/getinfo.js');
+const { getInfoRole, getInfoJob, getInfoEmployee, getUserFromDatabase } = require('./database/queries/getinfo.js');
 const postinfo = require('./database/queries/postinfo.js');
 var bcrypt = require('bcryptjs');
 // const Store = require('data-store')
@@ -102,16 +102,41 @@ const loginHandler = (request, response ) => {
 };
 
 const signupHandler = (request, response ) => {
-  console.log('this is register handler1');
-
   const filepath = path.join(__dirname, '..','public', 'register.html');
   readFile(filepath, (err, file) => {
-    if (err) return serverError(err, response);
+  if (err) return serverError(err, response);
   console.log('this is register handler');
   response.writeHead(200, { "content-type": "text/html" });
   response.end(file);
 })
 };
+
+const registerHandler = (request, response) => {
+  var body = '';
+   request.on('data', (data) => {
+     body += data.toString();
+   });
+   request.on('end', () => {
+     const { email, password } = qs.parse(body)
+     bcrypt.hash(password, 8, (hashErr, hashedPassword) => {
+       if (hashErr) {
+         response.statusCode = 500;
+         response.end('Error registering')
+         return
+       }
+       queries.addUserToDatabase(email, hashedPassword, (err, result) => {
+         if (err) {
+           response.statusCode = 500;
+           response.end('Error registering')
+           return
+         }
+         response.statusCode = 200;
+         response.end('successfully registered!')
+       });
+     })
+   });
+ }
+
 
 
 
@@ -127,5 +152,6 @@ module.exports = {
   createEmployeeHandler,
   loginHandler,
   signupHandler,
-  errorHandler
+  errorHandler,
+  registerHandler
 };

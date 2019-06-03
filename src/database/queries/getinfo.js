@@ -1,4 +1,5 @@
-
+const Store = require('data-store')
+const db = new Store('db', { cwd: './' });
 const databaseConnection = require("../db_connection.js");
 
 const getInfoEmployee = cb => {
@@ -32,8 +33,18 @@ const getInfoJob = cb => {
   });
 }
 
+const getUserFromDatabase = (email, cb) => {
+  const database = db.get("data")
+  const user = database.find(user => user.email === email)
+  const password = user ? user.password : undefined
+  cb(null, password)
+}
+
+
 module.exports = {
    getInfoJob,
    getInfoRole,
-   getInfoEmployee
+   getInfoEmployee,
+   getUserFromDatabase
+
 };

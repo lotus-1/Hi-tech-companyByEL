@@ -13,4 +13,4 @@ const postinfo = (first_name, last_name, phone_num, job_id, cb) => {
   );
 };
 
-module.exports = postinfo;
+module.exports = postinfo ;
