@@ -27,10 +27,6 @@ FOREIGN KEY (mgr_id) REFERENCES employee(emp_id)
 
 );
 
--- ALTER TABLE employee
--- ADD FOREIGN KEY(job_id)
--- REFERNCES role(job_id)
--- ON DELETE SET NULL;BEGIN;
 
 INSERT INTO role (job_id, role, selary, mgr_id) VALUES
 ('5284', 'engineer', '10000', '1');
