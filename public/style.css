@@ -9,3 +9,16 @@ form {
   text-align: left;
   color: white;
 }
+
+h1 {
+  text-align: center;
+  color: #0431B4;
+}
+
+section {
+  text-align: right;
+  /* margin-top: 25px; */
+
+/* margin: 25px 50px 75px; */
+
+}
